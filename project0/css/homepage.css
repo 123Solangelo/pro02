@@ -1,0 +1,92 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+  grid-gap: 15px;
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuBv9FVVTE3lnW1mWg77GLDtrIx1wyU8R72w&usqp=CAU");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+      
+}
+
+h1 {
+    color: #0d8b5d;
+}
+
+p {
+    color: #08bde6;
+}
+
+a {
+    color: aquamarine;
+}
+
+header {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(6, 51, 51);
+  padding: 10px;
+}
+
+.logo-button {
+  float:right;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-button {
+    
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+  transition: color 0.3s ease;
+  
+}
+
+.btn:hover {
+    color: red;
+  }
+.btn{
+    color: blueviolet;
+}
+
+@media (max-width: 800px) {
+  #hamburger {
+    display: block; /* Show hamburger when screen is smaller than 800px */
+  }
+
+  #header-menu {
+    display: none; /* Hide header menu by default */
+    flex-direction: column; /* Display headers in a column */
+    background-color: #ccc; /* Different background color */
+    width: 50%; /* Occupies 50% of the screen */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+  }
+
+  #header-menu.show {
+    display: block; /* Show header menu when hamburger is clicked */
+  }
+}
+
+
+ 

@@ -1,0 +1,59 @@
+chartIt();
+
+async function getData(){
+    const songNames = []
+    const danceabilities = []
+
+    top1Song = top2Song = top3Song = "";
+    top1D = top2D = top3D = 0;
+
+    const response = await fetch('4_dog_info.csv');
+    const data = await response.text();
+    console.log(data);
+    const table = data.trim().split('\n').slice(1);
+    table.forEach(row => {
+        const columns = row.split(',');
+        const songName = columns[1];
+        songNames.push(songName);
+        const danceability = columns[7];
+        danceabilities.push(danceability);
+
+        updateTop3(songName, danceability);
+        console.log(songName, danceability);
+
+
+    });
+    console.log(top1D, top1Song)
+    console.log(top2D, top2Song)
+    console.log(top3D, top3Song)
+    document.getElementById("top1").innerHTML = "1. " + top1Song;
+    document.getElementById("top2").innerHTML = "2. " + top2Song;
+    document.getElementById("top3").innerHTML = "3. " + top3Song;
+    return { songNames, danceabilities };
+}
+
+async function chartIt(){
+    const data = await getData();
+    const ctx = document.getElementById('myChart');
+    ctx.height = 50;
+    const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: data.songNames,
+        datasets: [{
+        label: 'Danceability',
+        data: data.danceabilities,
+        backgroundColor: 'rgba(217, 77, 123, 0.2)',
+        borderColor: 'rgb(217, 77, 123)',
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true,
+        }
+        }
+    }
+    });
+}

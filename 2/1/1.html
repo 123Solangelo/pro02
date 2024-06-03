@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="1.css">
+</head>
+<body>
+
+    <h1>Login</h1>
+
+
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="diet">Dietary Preference:</label>
+        <select id="diet" name="diet" required>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="none">None</option>
+        </select>
+
+        <button type="button" onclick="submitForm()">Login</button>
+    </form>
+
+
+    <script src="1.js"></script>
+
+</body>
+</html>

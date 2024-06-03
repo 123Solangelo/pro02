@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV</title>
+</head>
+<body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        async function fetch_demo(){
+            const response = await fetch("4_dog_info.csv");
+            const data = await response.text();
+            
+            Papa.parse(data, {
+                complete: function(results) {
+                    console.log(results.data);
+                    const ctx = document.createElement('canvas');
+                    document.body.appendChild(ctx);
+                    X = results.data.map(row => row[1]).slice(0, 10)
+                    Y = results.data.map(row => row[3]).slice(0, 10)
+                    console.log(Y)
+                    const dataForGraph =  {
+                        labels :X,
+                        datasets: [{
+                            label: 'movies by rating',
+                            data: Y,
+                        }],
+                    };
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: dataForGraph,
+                    });
+                }
+            });
+        }
+        fetch_demo();
+    </script>
+</body>
+</html>
